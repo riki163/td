@@ -1,0 +1,74 @@
+Random Password Generator Flask App
+====================================
+
+This is the documentation for the Random Password Generator Flask App.
+
+.. automodule:: your_module
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Overview
+--------
+
+The Random Password Generator Flask App is a Flask-based web application that generates random passwords based on user preferences.
+
+Flask App Initialization
+------------------------
+
+The Flask app is initialized with the following code:
+
+.. code-block:: python
+
+    from flask import Flask, request, render_template
+    from datetime import date
+    import random
+    import string
+
+    app = Flask(__name__)
+
+Date Formatting
+---------------
+
+The app saves the current date in two different formats:
+
+.. code-block:: python
+
+    datetoday = date.today().strftime("%m_%d_%y")
+    datetoday2 = date.today().strftime("%d-%B-%Y")
+
+Routing Functions
+------------------
+
+### Main Page
+
+The main page of the app is defined by the following route function:
+
+.. code-block:: python
+
+    @app.route('/')
+    def home():
+        return render_template('home.html', datetoday2=datetoday2)
+
+### Password Generation
+
+The password generation route function handles user input and generates random passwords:
+
+.. code-block:: python
+
+    @app.route('/genpassword', methods=['GET', 'POST'])
+    def genpassword():
+        # ... (omitted for brevity)
+
+        return render_template('home.html', datetoday2=datetoday2, generatedpassword=password)
+
+Main Function
+-------------
+
+The main function that runs the Random Password Generator Flask App:
+
+.. code-block:: python
+
+    if __name__ == '__main__':
+        app.run(debug=True)
+
